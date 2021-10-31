@@ -77,6 +77,14 @@ public class TaxiScript : MonoBehaviour
         invincible.text = "Invincible Mode: " + isInvincible;
         rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, forwardVelocity);
         // MOVE HORIZONTALLY BETWEEN LANES
+        if(SwipeManager.swipeLeft){
+            Debug.Log("Swipe Left");
+            moveX = -1;
+        }
+        if(SwipeManager.swipeRight){
+            Debug.Log("Swipe right");
+            moveX = 1;
+        }
         if (moveX * Speed + transform.position.x < 2 && moveX * Speed + transform.position.x > -2)
         {
             transform.Translate(new Vector3(moveX * Speed, 0, 0));
@@ -113,12 +121,27 @@ public class TaxiScript : MonoBehaviour
             rb.AddForce(new Vector3(0, 5, 0), ForceMode.Impulse);
         }
     }
+    public void JumpFromUIButton(){
+        Debug.Log("in jump from UI button "+transform.position.y);
+        
+        if (transform.position.y <= 0.6)
+        {
+           
+            rb.AddForce(new Vector3(0, 10, 0), ForceMode.Impulse);
+        }
+    }
     public void ChangeCamera(InputAction.CallbackContext context){
         Debug.Log("in change camera");
         Cameras[cameraIndex].SetActive(false);
         cameraIndex = 1 - cameraIndex;
         Cameras[cameraIndex].SetActive(true);
 
+    }
+    public void ChangeCameraFromUIButton(){
+        Debug.Log("in change camera");
+        Cameras[cameraIndex].SetActive(false);
+        cameraIndex = 1 - cameraIndex;
+        Cameras[cameraIndex].SetActive(true);
     }
     public void PauseAndResume (InputAction.CallbackContext context){
         Debug.Log("Pause and resume");
@@ -133,6 +156,19 @@ public class TaxiScript : MonoBehaviour
             gameMusic.Play();
         }
         
+    }
+    public void PauseAndResumeFromUIButton(){
+        Debug.Log("Pause and resume from UI Button");
+        paused = !paused;
+        pauseScreen.SetActive(paused);
+        if(paused){
+            Time.timeScale = 0;
+            gameMusic.Pause();
+        }
+        else{
+            Time.timeScale = 1;
+            gameMusic.Play();
+        }
     }
     public void ResumeFromPauseScreen(){
         Debug.Log("resume from pause screen");

@@ -52,6 +52,22 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "AndroidPrimaryContact",
+                    "type": "PassThrough",
+                    "id": "1f85deee-4c8d-4c41-bcb2-cbd24f55040f",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
+                },
+                {
+                    "name": "AndroidPrimaryPosition",
+                    "type": "PassThrough",
+                    "id": "6ae8a661-9ee3-4a2d-ae05-6778eb2a685b",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -261,6 +277,28 @@
                     "processors": "",
                     "groups": "Keyboard&Mouse",
                     "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "45b04800-724a-4bd9-bb69-9cb3d4c3bdc7",
+                    "path": "<Touchscreen>/primaryTouch/press",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AndroidPrimaryContact",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "862966ac-4bb3-40f8-aac3-c75382cb9d27",
+                    "path": "<Touchscreen>/primaryTouch/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "AndroidPrimaryPosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
